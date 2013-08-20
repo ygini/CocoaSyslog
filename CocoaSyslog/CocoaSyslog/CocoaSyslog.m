@@ -8,6 +8,8 @@
 
 #import "CocoaSyslog.h"
 
+#include <pthread.h>
+
 @interface CocoaSyslog ()
 {
 	BOOL _loggerIsOpen;
@@ -92,48 +94,88 @@
 
 - (void)message:(NSString*)message withLevel:(CSLLogLevel)logLevel
 {
-	syslog(logLevel, "%s", [message cStringUsingEncoding:NSUTF8StringEncoding]);
+	syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 
-- (void)messageLevel0Emergency:(NSString*)message
+- (void)messageLevel0Emergency:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel0Emergency];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel1Alert:(NSString*)message
+- (void)messageLevel1Alert:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel1Alert];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel2Critical:(NSString*)message
+- (void)messageLevel2Critical:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel2Critical];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel3Error:(NSString*)message
+- (void)messageLevel3Error:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel3Error];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel4Warning:(NSString*)message
+- (void)messageLevel4Warning:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel4Warning];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel5Notice:(NSString*)message
+- (void)messageLevel5Notice:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel5Notice];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel6Info:(NSString*)message
+- (void)messageLevel6Info:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel6Info];
+	[message release];
+    va_end(ap);
 }
 
-- (void)messageLevel7Debug:(NSString*)message
+- (void)messageLevel7Debug:(NSString*)format, ...
 {
+	va_list ap;
+    va_start(ap, format);
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel7Debug];
+	[message release];
+    va_end(ap);
 }
 
 

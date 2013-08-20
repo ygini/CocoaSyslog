@@ -46,13 +46,21 @@ typedef NS_ENUM(NSInteger, CSLLogLevel)
 
 - (void)message:(NSString*)message withLevel:(CSLLogLevel)logLevel;
 
-- (void)messageLevel0Emergency:(NSString*)message;
-- (void)messageLevel1Alert:(NSString*)message;
-- (void)messageLevel2Critical:(NSString*)message;
-- (void)messageLevel3Error:(NSString*)message;
-- (void)messageLevel4Warning:(NSString*)message;
-- (void)messageLevel5Notice:(NSString*)message;
-- (void)messageLevel6Info:(NSString*)message;
-- (void)messageLevel7Debug:(NSString*)message;
+/* system is unusable */
+- (void)messageLevel0Emergency:(NSString*)format, ...;
+/* action must be taken immediately */
+- (void)messageLevel1Alert:(NSString*)format, ...;
+/* critical conditions */
+- (void)messageLevel2Critical:(NSString*)format, ...;
+/* error conditions */
+- (void)messageLevel3Error:(NSString*)format, ...;
+/* warning conditions */
+- (void)messageLevel4Warning:(NSString*)format, ...;
+/* normal but significant condition */
+- (void)messageLevel5Notice:(NSString*)format, ...;
+/* informational */
+- (void)messageLevel6Info:(NSString*)format, ...;
+/* debug-level messages */
+- (void)messageLevel7Debug:(NSString*)format, ...;
 
 @end
