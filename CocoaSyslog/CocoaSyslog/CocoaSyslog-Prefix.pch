@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CocoaSyslog' target in the 'CocoaSyslog' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
