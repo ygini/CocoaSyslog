@@ -95,6 +95,13 @@
 - (void)message:(NSString*)message withLevel:(CSLLogLevel)logLevel
 {
 	syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
+    
+#ifdef DEBUG
+        // Run my debugging only code
+    NSLog(@"%@", message);
+    
+#endif
+    
 }
 
 
