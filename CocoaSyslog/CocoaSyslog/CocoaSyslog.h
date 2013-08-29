@@ -63,4 +63,9 @@ typedef NS_ENUM(NSInteger, CSLLogLevel)
 /* debug-level messages */
 - (void)messageLevel7Debug:(NSString*)format, ...;
 
+/* Set Log Level Message */
+- (void) setAppLogLevel:(int)logLevel;
+- (int) currentLogLevel:(CSLLogLevel)logLevel;
+
+
 @end

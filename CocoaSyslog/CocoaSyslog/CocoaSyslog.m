@@ -16,6 +16,8 @@
 	NSString *_applicationIdentity;
 	BOOL _consoleLog;
 	CSLLogFacility _facility;
+    
+    int selectedLogLevel;
 }
 
 @end
@@ -94,16 +96,56 @@
 
 - (void)message:(NSString*)message withLevel:(CSLLogLevel)logLevel
 {
-	syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
+    if ([self currentLogLevel:logLevel] == selectedLogLevel) {
+        syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
+    }
     
 #ifdef DEBUG
         // Run my debugging only code
-    NSLog(@"%@", message);
-    
+        NSLog(@"%@", message);
 #endif
     
 }
 
+- (void) setAppLogLevel:(int)logLevel
+{
+    selectedLogLevel = logLevel;
+}
+
+- (int) currentLogLevel:(CSLLogLevel)logLevel
+{
+    int currentLevel;
+    
+    switch (logLevel)
+    {
+        case CSLLogLevel0Emergency:
+            currentLevel = 0;
+            break;
+        case CSLLogLevel1Alert:
+            currentLevel = 1;
+            break;
+        case CSLLogLevel2Critical:
+            currentLevel = 2;
+            break;
+        case CSLLogLevel3Error:
+            currentLevel = 3;
+            break;
+        case CSLLogLevel4Warning:
+            currentLevel = 4;
+            break;
+        case CSLLogLevel5Notice:
+            currentLevel = 5;
+            break;
+        case CSLLogLevel6Info:
+            currentLevel = 6;
+            break;
+        case CSLLogLevel7Debug:
+            currentLevel = 7;
+            break;
+    }
+    
+    return currentLevel;
+}
 
 - (void)messageLevel0Emergency:(NSString*)format, ...
 {
