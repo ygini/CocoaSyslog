@@ -10,6 +10,7 @@
 
 #import <syslog.h>
 
+// TODO: complete the Facility list
 typedef NS_ENUM(NSInteger, CSLLogFacility)
 {
 	CSLLogFacilityKernel = LOG_KERN,
