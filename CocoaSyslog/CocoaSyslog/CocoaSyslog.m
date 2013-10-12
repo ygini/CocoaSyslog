@@ -106,41 +106,6 @@
 #endif
 }
 
-- (int) currentLogLevel:(CSLLogLevel)logLevel
-{
-    int currentLevel;
-    
-    switch (logLevel)
-    {
-        case CSLLogLevel0Emergency:
-            currentLevel = 0;
-            break;
-        case CSLLogLevel1Alert:
-            currentLevel = 1;
-            break;
-        case CSLLogLevel2Critical:
-            currentLevel = 2;
-            break;
-        case CSLLogLevel3Error:
-            currentLevel = 3;
-            break;
-        case CSLLogLevel4Warning:
-            currentLevel = 4;
-            break;
-        case CSLLogLevel5Notice:
-            currentLevel = 5;
-            break;
-        case CSLLogLevel6Info:
-            currentLevel = 6;
-            break;
-        case CSLLogLevel7Debug:
-            currentLevel = 7;
-            break;
-    }
-    
-    return currentLevel;
-}
-
 - (void)messageLevel0Emergency:(NSString*)format, ...
 {
 	va_list ap;
