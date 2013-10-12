@@ -37,10 +37,8 @@
 
 - (void)setApplicationIdentity:(NSString*)identity
 {
-	if (_loggerIsOpen) {
-		return;
-	}
-	
+	NSAssert(!_loggerIsOpen, @"CocoaSyslog: impossible to change the application name when the logger is open");
+
 	@synchronized(_applicationIdentity)
 	{
 		id oldV = _applicationIdentity;
@@ -56,41 +54,32 @@
 
 - (void)setFacility:(CSLLogFacility)facility
 {
-	if (_loggerIsOpen) {
-		return;
-	}
-	
+	NSAssert(!_loggerIsOpen, @"CocoaSyslog: Impossible to change the facility settings when the logger is open!");
 	_facility = facility;
 }
 
 - (void)setConsoleOutput:(BOOL)console
 {
-	if (_loggerIsOpen) {
-		return;
-	}
-	
+	NSAssert(!_loggerIsOpen, @"CocoaSyslog: Impossible to change the ConsoleOutput settings when the logger is open!");
 	_consoleLog = console;
 }
 
 
 - (void)openLog
 {
-	if (!_loggerIsOpen)
+	NSAssert(_loggerIsOpen, @"CocoaSyslog: Logger already open!");
+	@synchronized(_applicationIdentity)
 	{
-		@synchronized(_applicationIdentity)
-		{
-			openlog([_applicationIdentity cStringUsingEncoding:NSUTF8StringEncoding], _consoleLog ? LOG_CONS : 0 | LOG_PID, _facility);
-			_loggerIsOpen = YES;
-		}
+		openlog([_applicationIdentity cStringUsingEncoding:NSUTF8StringEncoding], _consoleLog ? LOG_CONS : 0 | LOG_PID, _facility);
+		_loggerIsOpen = YES;
 	}
 }
 
 - (void)closeLog
 {
-	if (_loggerIsOpen) {
-		closelog();
-		_loggerIsOpen = NO;
-	}
+	NSAssert(!_loggerIsOpen, @"CocoaSyslog: Logger already close!");
+	closelog();
+	_loggerIsOpen = NO;
 }
 
 
