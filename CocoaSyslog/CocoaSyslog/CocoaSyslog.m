@@ -96,20 +96,14 @@
 
 - (void)message:(NSString*)message withLevel:(CSLLogLevel)logLevel
 {
-    if ([self currentLogLevel:logLevel] == selectedLogLevel) {
-        syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
-    }
-    
-#ifdef DEBUG
-        // Run my debugging only code
-        NSLog(@"%@", message);
-#endif
-    
+	syslog(logLevel, "%s", [[NSString stringWithFormat:@"(%x) %@", pthread_mach_thread_np(pthread_self()), message] cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 - (void) setAppLogLevel:(int)logLevel
 {
-    selectedLogLevel = logLevel;
+#ifndef DEBUG
+	setlogmask(logLevel);
+#endif
 }
 
 - (int) currentLogLevel:(CSLLogLevel)logLevel
