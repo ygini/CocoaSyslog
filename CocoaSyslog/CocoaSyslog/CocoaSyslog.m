@@ -67,7 +67,7 @@
 
 - (void)openLog
 {
-	NSAssert(_loggerIsOpen, @"CocoaSyslog: Logger already open!");
+	NSAssert(!_loggerIsOpen, @"CocoaSyslog: Logger already open!");
 	@synchronized(_applicationIdentity)
 	{
 		openlog([_applicationIdentity cStringUsingEncoding:NSUTF8StringEncoding], _consoleLog ? LOG_CONS : 0 | LOG_PID, _facility);
@@ -77,7 +77,7 @@
 
 - (void)closeLog
 {
-	NSAssert(!_loggerIsOpen, @"CocoaSyslog: Logger already close!");
+	NSAssert(_loggerIsOpen, @"CocoaSyslog: Logger already close!");
 	closelog();
 	_loggerIsOpen = NO;
 }
