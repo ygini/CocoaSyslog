@@ -43,7 +43,6 @@
 	{
 		id oldV = _applicationIdentity;
 		_applicationIdentity = [identity copy];
-		[oldV release];
 	}
 }
 
@@ -101,7 +100,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel0Emergency];
-	[message release];
     va_end(ap);
 }
 
@@ -111,7 +109,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel1Alert];
-	[message release];
     va_end(ap);
 }
 
@@ -121,7 +118,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel2Critical];
-	[message release];
     va_end(ap);
 }
 
@@ -131,7 +127,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel3Error];
-	[message release];
     va_end(ap);
 }
 
@@ -141,7 +136,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel4Warning];
-	[message release];
     va_end(ap);
 }
 
@@ -151,7 +145,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel5Notice];
-	[message release];
     va_end(ap);
 }
 
@@ -161,7 +154,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel6Info];
-	[message release];
     va_end(ap);
 }
 
@@ -171,7 +163,6 @@
     va_start(ap, format);
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:ap];
 	[self message:message withLevel:CSLLogLevel7Debug];
-	[message release];
     va_end(ap);
 }
 

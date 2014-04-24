@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D5F9CC22-8500-479D-9156-501D955A738F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CocoaSyslog</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D3697F33-6CDC-4E5F-A9B4-CDD9492D600A</key>
+		<string>https://github.com/ygini/CocoaSyslog.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CocoaSyslog.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D3697F33-6CDC-4E5F-A9B4-CDD9492D600A</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ygini/CocoaSyslog.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D3697F33-6CDC-4E5F-A9B4-CDD9492D600A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D3697F33-6CDC-4E5F-A9B4-CDD9492D600A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CocoaSyslog</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -266,10 +266,11 @@
 		E111E3C717C3951B00AA40E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILD_DIR)\"";
+				HEADER_SEARCH_PATHS = "\"$(BUILD_DIR)\"/**";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -283,10 +284,11 @@
 		E111E3C817C3951B00AA40E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILD_DIR)\"";
+				HEADER_SEARCH_PATHS = "\"$(BUILD_DIR)\"/**";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +318,7 @@
 				E111E3C817C3951B00AA40E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
