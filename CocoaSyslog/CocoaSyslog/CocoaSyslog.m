@@ -41,7 +41,6 @@
 
 	@synchronized(_applicationIdentity)
 	{
-		id oldV = _applicationIdentity;
 		_applicationIdentity = [identity copy];
 	}
 }
