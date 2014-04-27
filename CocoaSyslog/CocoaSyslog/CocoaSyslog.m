@@ -35,6 +35,17 @@
 	return sharedInstanceCocoaSyslog;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setApplicationIdentity:[[NSProcessInfo processInfo].arguments[0] lastPathComponent]];
+		[self setFacility:CSLLogFacilityUser];
+		[self openLog];
+    }
+    return self;
+}
+
 - (void)setApplicationIdentity:(NSString*)identity
 {
 	NSAssert(!_loggerIsOpen, @"CocoaSyslog: impossible to change the application name when the logger is open");
