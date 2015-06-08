@@ -46,6 +46,15 @@
     return self;
 }
 
+- (void)prepareApplicationIdentity:(NSString*)identity andFacility:(CSLLogFacility)facility withConsoleOutput:(BOOL)console
+{
+    [self closeLog];
+    [self setApplicationIdentity:identity];
+    [self setFacility:facility];
+    [self setConsoleOutput:console];
+    [self openLog];
+}
+
 - (void)setApplicationIdentity:(NSString*)identity
 {
 	NSAssert(!_loggerIsOpen, @"CocoaSyslog: impossible to change the application name when the logger is open");

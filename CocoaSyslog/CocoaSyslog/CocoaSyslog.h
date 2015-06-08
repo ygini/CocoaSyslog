@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger, CSLLogLevel)
 
 + (CocoaSyslog*)sharedInstance;
 
+- (void)prepareApplicationIdentity:(NSString*)identity andFacility:(CSLLogFacility)facility withConsoleOutput:(BOOL)console;
+
 - (void)setApplicationIdentity:(NSString*)identity;
 - (void)setLogMask:(CSLLogLevel)logmask;
 - (void)setFacility:(CSLLogFacility)facility;
